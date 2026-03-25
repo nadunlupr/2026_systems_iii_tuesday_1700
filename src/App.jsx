@@ -9,6 +9,8 @@ function App() {
 
   const initialState = {
     searchText: ' ',
+    clickedId: undefined
+
   }
   const [state, setState] = useState(initialState);
 
@@ -16,7 +18,11 @@ function App() {
     setState({ ...state, searchText: text })
   }
 
-  const groupList = ["smart Group", "Stupid Group", "average grou", "Genius group"];
+  const groupList = [
+    { id: 1, name: "smart Group" },
+    { id: 2, name: "Stupid Group" },
+    { id: 3, name: "average grou" },
+    { id: 4, name: "Genius group" }];
   return (
     <>
       <Link to="/counter" > Got to Counter </Link>
@@ -24,10 +30,16 @@ function App() {
       {state.searchText}
       {
         groupList
-          .map((item) => {
-            return item.includes(state.searchText) ?
-              <GroupCard key={item} name={item} /> :
-              undefined;
+          .map(({ id: itemId, name }) => {
+            return name.includes(state.searchText) &&
+              <GroupCard key={itemId}
+                id={itemId}
+                name={name}
+                onCardClick={(id) => {
+                  console.log('clicked', id);
+                  setState({...state, clickedId: id})
+                }}
+                isActive={state.clickedId === itemId} />
           })
       }
     </>

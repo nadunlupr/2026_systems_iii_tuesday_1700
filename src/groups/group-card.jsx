@@ -1,7 +1,8 @@
-function GroupCard(props){
+function GroupCard({ id, name, isActive, onCardClick }) {
     return (
-        <div>
-            <h1>Group Name: {props.name}</h1>
+        <div className={isActive ? 'group-card-selected' : undefined}
+            onClick={() => onCardClick(id)}>
+            <h1>Group Name: {name}</h1>
             <p>Number of students: 16</p>
         </div>
     )
