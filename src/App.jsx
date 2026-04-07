@@ -26,6 +26,9 @@ function App() {
   return (
     <>
       <Link to="/counter" > Got to Counter </Link>
+      <br />
+      <Link to='/promise-demo'>Go to promise-demo</Link>
+      <br />
       <input type='text' onChange={({ target: { value } }) => onSearchChange(value)} />
       {state.searchText}
       {
@@ -37,7 +40,7 @@ function App() {
                 name={name}
                 onCardClick={(id) => {
                   console.log('clicked', id);
-                  setState({...state, clickedId: id})
+                  setState({ ...state, clickedId: id })
                 }}
                 isActive={state.clickedId === itemId} />
           })
