@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import GroupCard from './groups/group-card';
 import { Link } from 'react-router';
+import Layout from './nav-bar/Layout';
+import { UserProvider } from './user-context/UserProvider';
 
 function App() {
 
@@ -23,8 +25,16 @@ function App() {
     { id: 2, name: "Stupid Group" },
     { id: 3, name: "average grou" },
     { id: 4, name: "Genius group" }];
+
+  const user = {
+    name: 'Nina'
+  }
   return (
     <>
+      <UserProvider user={user} >
+        <Layout />
+      </UserProvider>
+
       <Link to="/counter" > Got to Counter </Link>
       <br />
       <Link to='/promise-demo'>Go to promise-demo</Link>
