@@ -34,7 +34,8 @@ function App() {
       <UserProvider user={user} >
         <Layout />
       </UserProvider>
-
+      <Link to='/store-counter'>Go to Store Counter</Link>
+      <br />
       <Link to="/counter" > Got to Counter </Link>
       <br />
       <Link to='/promise-demo'>Go to promise-demo</Link>
